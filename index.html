@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Natanael Rodrigues | Chef de Cozinha</title>
 <meta name="description" content="Conheça Natanael Rodrigues, Chef de Cozinha com mais de 10 anos de experiência no Pedrinho's Parrilla em Garopaba.">
+
 <style>
 *{
   margin:0;
@@ -87,19 +88,23 @@ header p{
   margin-top:25px;
 }
 
-button{
-  background:#d4af37;
-  color:#111;
+/* BOTÃO BIOGRAFIA ALTERADO */
+.btn-bio{
+  background: linear-gradient(135deg,#00c6ff,#0072ff);
+  color:#fff;
   border:none;
   padding:14px 22px;
   border-radius:12px;
   cursor:pointer;
   font-weight:bold;
   font-size:1rem;
+  box-shadow:0 8px 20px rgba(0,114,255,.35);
+  transition:0.3s;
 }
 
-button:hover{
+.btn-bio:hover{
   transform:scale(1.05);
+  box-shadow:0 12px 28px rgba(0,114,255,.55);
 }
 
 .modal{
@@ -160,6 +165,7 @@ footer{
 }
 </style>
 </head>
+
 <body>
 
 <header>
@@ -168,10 +174,12 @@ footer{
 </header>
 
 <section class="hero">
+
   <img src="Natanael.jpg" alt="Natanael Rodrigues Chef de Cozinha">
 
   <div class="card">
     <h2>Excelência em Gastronomia</h2>
+
     <p>
       Natanael Rodrigues é Chef de Cozinha com ampla experiência em liderança gastronômica,
       preparo de pratos especiais e alto padrão de qualidade. Atua no restaurante
@@ -186,15 +194,18 @@ footer{
     </div>
 
     <div class="actions">
-      <button onclick="abrirBio()">Ver Biografia</button>
+      <button class="btn-bio" onclick="abrirBio()">Ver Biografia</button>
     </div>
+
   </div>
 </section>
 
 <div class="modal" id="bio">
   <div class="modal-content">
     <span class="close" onclick="fecharBio()">✕</span>
+
     <h3>Biografia Profissional</h3>
+
     <p>
       Natanael Rodrigues construiu sua trajetória na gastronomia ao longo de mais de
       uma década de dedicação. Reconhecido pelo comprometimento, criatividade e liderança,
@@ -202,6 +213,7 @@ footer{
       Hoje integra o time do Pedrinho's Parrilla, contribuindo diariamente para elevar
       a experiência gastronômica em Garopaba.
     </p>
+
   </div>
 </div>
 
