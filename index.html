@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Natanael Rodrigues | Chef de Cozinha</title>
+<meta name="description" content="Conheça Natanael Rodrigues, Chef de Cozinha com mais de 10 anos de experiência no Pedrinho's Parrilla em Garopaba.">
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#111,#1f1f1f,#2b2b2b);
+  color:#fff;
+}
+
+header{
+  padding:60px 20px;
+  text-align:center;
+  background: linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.7));
+}
+
+header h1{
+  font-size:3rem;
+}
+
+header p{
+  margin-top:10px;
+  color:#ddd;
+  font-size:1.1rem;
+}
+
+.hero{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+  align-items:center;
+  padding:50px 20px;
+}
+
+.hero img{
+  width:100%;
+  border-radius:20px;
+  box-shadow:0 15px 40px rgba(0,0,0,.4);
+}
+
+.card{
+  background: rgba(255,255,255,.08);
+  padding:30px;
+  border-radius:20px;
+  backdrop-filter: blur(8px);
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+.card h2{
+  font-size:2rem;
+  margin-bottom:15px;
+}
+
+.card p{
+  line-height:1.7;
+  color:#eee;
+}
+
+.badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:20px;
+}
+
+.badges span{
+  background:#d4af37;
+  color:#111;
+  padding:10px 14px;
+  border-radius:50px;
+  font-weight:bold;
+}
+
+.actions{
+  margin-top:25px;
+}
+
+button{
+  background:#d4af37;
+  color:#111;
+  border:none;
+  padding:14px 22px;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:bold;
+  font-size:1rem;
+}
+
+button:hover{
+  transform:scale(1.05);
+}
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.modal-content{
+  max-width:700px;
+  width:100%;
+  background:#fff;
+  color:#111;
+  border-radius:20px;
+  padding:30px;
+  animation:fade .3s ease;
+}
+
+.modal-content h3{
+  margin-bottom:15px;
+  font-size:2rem;
+}
+
+.modal-content p{
+  line-height:1.8;
+}
+
+.close{
+  float:right;
+  cursor:pointer;
+  font-size:1.5rem;
+  font-weight:bold;
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  color:#aaa;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+@media(max-width:900px){
+  .hero{
+    grid-template-columns:1fr;
+  }
+
+  header h1{
+    font-size:2.2rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Natanael Rodrigues</h1>
+  <p>Chef de Cozinha • Mais de 10 anos de experiência • Garopaba/SC</p>
+</header>
+
+<section class="hero">
+  <img src="Natanael.jpg" alt="Natanael Rodrigues Chef de Cozinha">
+
+  <div class="card">
+    <h2>Excelência em Gastronomia</h2>
+    <p>
+      Natanael Rodrigues é Chef de Cozinha com ampla experiência em liderança gastronômica,
+      preparo de pratos especiais e alto padrão de qualidade. Atua no restaurante
+      Pedrinho's Parrilla, em Garopaba, oferecendo experiências marcantes aos clientes.
+    </p>
+
+    <div class="badges">
+      <span>Parrilla</span>
+      <span>Liderança</span>
+      <span>Qualidade</span>
+      <span>+10 Anos</span>
+    </div>
+
+    <div class="actions">
+      <button onclick="abrirBio()">Ver Biografia</button>
+    </div>
+  </div>
+</section>
+
+<div class="modal" id="bio">
+  <div class="modal-content">
+    <span class="close" onclick="fecharBio()">✕</span>
+    <h3>Biografia Profissional</h3>
+    <p>
+      Natanael Rodrigues construiu sua trajetória na gastronomia ao longo de mais de
+      uma década de dedicação. Reconhecido pelo comprometimento, criatividade e liderança,
+      tornou-se referência em cozinha profissional e atendimento de excelência.
+      Hoje integra o time do Pedrinho's Parrilla, contribuindo diariamente para elevar
+      a experiência gastronômica em Garopaba.
+    </p>
+  </div>
+</div>
+
+<footer>
+  Site demonstrativo • Presença profissional online
+</footer>
+
+<script>
+function abrirBio(){
+  document.getElementById('bio').style.display='flex';
+}
+
+function fecharBio(){
+  document.getElementById('bio').style.display='none';
+}
+</script>
+
+</body>
+</html>
