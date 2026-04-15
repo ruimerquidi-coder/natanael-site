@@ -1,15 +1,538 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pedrinho's Parrilla</title>
-<style>body{font-family:Arial,sans-serif;background:#0a0a0a;color:#fff;margin:0}header{position:sticky;top:0;background:#111;padding:15px;text-align:center}nav a{color:#fff;margin:0 10px}section{padding:60px 20px;max-width:1100px;margin:auto}.hero{text-align:center;padding:100px 20px;background:#222}.btn{display:inline-block;padding:12px 22px;background:#ff5e00;color:#fff;border-radius:30px;text-decoration:none;margin:8px}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}.card{background:#151515;padding:15px;border-radius:16px}.chef{display:grid;grid-template-columns:1fr 1fr;gap:25px;align-items:center}.chef img{width:100%;border-radius:18px}.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);align-items:center;justify-content:center;padding:20px}.box{background:#fff;color:#111;max-width:700px;padding:25px;border-radius:18px}@media(max-width:800px){.chef{grid-template-columns:1fr}}</style>
-</head><body>
-<header><h1>Pedrinho's Parrilla</h1><nav><a href="#pratos">Pratos</a><a href="#chef">Chef</a><a href="#contato">Contato</a></nav></header>
-<section class="hero"><h2>🔥 Pedrinho's Parrilla</h2><p>Da brasa à beira mar • Experiência única</p><a class="btn" href="#chef">Conheça o Chef</a></section>
-<section id="pratos"><h2>Pratos Pioneiros</h2><div class="cards"><div class="card">Entrecot com Purê</div><div class="card">Salmão ao Molho de Maracujá</div><div class="card">Panna Cotta</div></div></section>
-<section id="chef"><h2>Nosso Chef</h2><div class="chef"><img src="Natanael.jpg"><div><h3>Natanael Rodrigues</h3><p>Chef de Cozinha com mais de 10 anos de experiência, referência em qualidade, liderança e pratos memoráveis no Pedrinho's Parrilla.</p><a class="btn" href="#" onclick="openBio()">Ver Biografia</a></div></div></section>
-<section id="contato"><h2>Contato</h2><a class="btn" href="https://wa.me/5551996396133">WhatsApp</a></section>
-<div class="modal" id="bio"><div class="box"><button onclick="closeBio()">Fechar</button><h3>Biografia Profissional</h3><p>Natanael Rodrigues construiu sua trajetória na gastronomia ao longo de mais de uma década. Reconhecido pelo comprometimento, criatividade e liderança, tornou-se referência em cozinha profissional e atendimento de excelência.</p></div></div>
-<script>function openBio(){document.getElementById('bio').style.display='flex'} function closeBio(){document.getElementById('bio').style.display='none'}</script>
-</body></html>
+<meta name="description" content="Restaurante premium em Garopaba com parrilla, frutos do mar e experiências únicas.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:#0a0a0a;
+  color:#fff;
+}
+
+/* HEADER */
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+  background:rgba(0,0,0,.65);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  padding:15px 20px;
+}
+
+.topbar{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+
+.logo{
+  color:#ff6a00;
+  font-size:1.4rem;
+  font-weight:700;
+}
+
+nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+}
+
+nav a{
+  color:#ddd;
+  text-decoration:none;
+  font-size:.95rem;
+  transition:.3s;
+}
+
+nav a:hover{
+  color:#ff6a00;
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:120px 20px 60px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+  linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.82)),
+  url('images/restaurante.jpg') center center/cover no-repeat;
+  animation:zoom 12s ease-in-out infinite alternate;
+  z-index:-1;
+}
+
+@keyframes zoom{
+  from{transform:scale(1);}
+  to{transform:scale(1.1);}
+}
+
+.hero-content{
+  max-width:800px;
+}
+
+.hero h1{
+  font-size:3rem;
+  color:#ff6a00;
+}
+
+.hero p{
+  color:#ddd;
+  margin-top:15px;
+  line-height:1.7;
+}
+
+.buttons{
+  margin-top:30px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:15px;
+}
+
+.btn{
+  display:inline-block;
+  padding:14px 24px;
+  border-radius:40px;
+  text-decoration:none;
+  color:#fff;
+  font-weight:600;
+  transition:.3s;
+}
+
+.btn-main{
+  background:linear-gradient(45deg,#ff5e00,#ffae00);
+  box-shadow:0 0 18px rgba(255,94,0,.35);
+}
+
+.btn-main:hover{
+  transform:translateY(-3px) scale(1.03);
+}
+
+.btn-outline{
+  border:1px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.06);
+}
+
+.btn-outline:hover{
+  background:rgba(255,255,255,.12);
+}
+
+/* GERAL */
+section{
+  padding:90px 20px;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+}
+
+.title{
+  text-align:center;
+  margin-bottom:45px;
+}
+
+.title h2{
+  font-size:2.1rem;
+  color:#fff;
+}
+
+.title p{
+  color:#aaa;
+  margin-top:8px;
+}
+
+/* CARDS */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:#111;
+  border:1px solid #222;
+  border-radius:20px;
+  overflow:hidden;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+}
+
+.card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+
+.card-content{
+  padding:20px;
+}
+
+.card-content h3{
+  color:#ff6a00;
+  margin-bottom:10px;
+}
+
+.card-content p{
+  color:#ccc;
+  line-height:1.6;
+}
+
+/* CHEF */
+.chef-box{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:35px;
+  align-items:center;
+}
+
+.chef-box img{
+  width:100%;
+  border-radius:22px;
+  box-shadow:0 15px 35px rgba(0,0,0,.4);
+}
+
+.chef-card{
+  background:#111;
+  border:1px solid #222;
+  border-radius:22px;
+  padding:30px;
+}
+
+.chef-card h3{
+  font-size:2rem;
+  margin-bottom:12px;
+}
+
+.chef-card p{
+  color:#ccc;
+  line-height:1.8;
+}
+
+.badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:20px;
+}
+
+.badges span{
+  background:#ffae00;
+  color:#111;
+  padding:8px 14px;
+  border-radius:30px;
+  font-weight:700;
+  font-size:.9rem;
+}
+
+/* REVIEWS */
+.review{
+  background:#111;
+  border:1px solid #222;
+  padding:20px;
+  border-radius:18px;
+  margin-bottom:15px;
+  color:#ddd;
+}
+
+/* MAPA */
+iframe{
+  width:100%;
+  height:320px;
+  border:0;
+  border-radius:18px;
+  margin-top:25px;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:30px 20px;
+  color:#888;
+  border-top:1px solid #1d1d1d;
+}
+
+/* MODAL */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  z-index:2000;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.modal-content{
+  background:#fff;
+  color:#111;
+  max-width:750px;
+  width:100%;
+  border-radius:22px;
+  padding:30px;
+  animation:fade .25s ease;
+}
+
+.modal-content h3{
+  font-size:2rem;
+  margin-bottom:15px;
+}
+
+.modal-content p{
+  line-height:1.8;
+}
+
+.close{
+  float:right;
+  cursor:pointer;
+  font-size:1.5rem;
+  font-weight:bold;
+}
+
+@keyframes fade{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* RESPONSIVO */
+@media(max-width:900px){
+  .chef-box{
+    grid-template-columns:1fr;
+  }
+
+  .hero h1{
+    font-size:2.2rem;
+  }
+
+  .topbar{
+    flex-direction:column;
+  }
+
+  nav{
+    justify-content:center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="topbar">
+    <div class="logo">🔥 Pedrinho's Parrilla</div>
+
+    <nav>
+      <a href="#pratos">Pratos</a>
+      <a href="#chef">Chef</a>
+      <a href="#avaliacoes">Avaliações</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Da Brasa à Beira Mar</h1>
+    <p>
+      Uma experiência gastronômica única em Garopaba.
+      Carnes nobres, frutos do mar e atendimento memorável.
+    </p>
+
+    <div class="buttons">
+      <a class="btn btn-main" href="https://wa.me/5551996396133" target="_blank">Reservar Agora</a>
+      <a class="btn btn-outline" href="#chef">Conheça o Chef</a>
+    </div>
+  </div>
+</section>
+
+<section id="pratos">
+  <div class="container">
+
+    <div class="title">
+      <h2>Pratos Pioneiros</h2>
+      <p>Sabores que marcam momentos.</p>
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <img src="images/prato.jpg" alt="Entrecot com Purê">
+        <div class="card-content">
+          <h3>Entrecot com Purê</h3>
+          <p>Carne macia grelhada na parrilla com purê cremoso e molho especial da casa.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="images/salmãomaracuja.jpg" alt="Salmão ao molho de maracujá">
+        <div class="card-content">
+          <h3>Salmão ao Molho de Maracujá</h3>
+          <p>Salmão grelhado com molho agridoce equilibrando frescor e intensidade.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="images/pannacotta.jpg" alt="Panna Cotta">
+        <div class="card-content">
+          <h3>Panna Cotta</h3>
+          <p>Sobremesa leve e cremosa com frutas vermelhas.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="chef">
+  <div class="container">
+
+    <div class="title">
+      <h2>Nosso Chef</h2>
+      <p>Excelência por trás de cada prato.</p>
+    </div>
+
+    <div class="chef-box">
+
+      <img src="images/Natanael.jpg" alt="Chef Natanael Rodrigues">
+
+      <div class="chef-card">
+        <h3>Natanael Rodrigues</h3>
+
+        <p>
+          Chef de Cozinha com mais de 10 anos de experiência.
+          Referência em liderança gastronômica, alto padrão de qualidade
+          e experiências memoráveis no Pedrinho's Parrilla.
+        </p>
+
+        <div class="badges">
+          <span>Parrilla</span>
+          <span>+10 Anos</span>
+          <span>Qualidade</span>
+          <span>Liderança</span>
+        </div>
+
+        <div class="buttons" style="justify-content:flex-start; margin-top:25px;">
+          <a href="#" class="btn btn-main" onclick="abrirBio()">Ver Biografia</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="avaliacoes">
+  <div class="container">
+
+    <div class="title">
+      <h2>Avaliações</h2>
+      <p>O que nossos clientes dizem.</p>
+    </div>
+
+    <div class="review">⭐️⭐️⭐️⭐️⭐️ Melhor experiência gastronômica da região!</div>
+    <div class="review">⭐️⭐️⭐️⭐️⭐️ Ambiente sofisticado e comida impecável.</div>
+
+  </div>
+</section>
+
+<section id="contato">
+  <div class="container">
+
+    <div class="title">
+      <h2>Contato & Localização</h2>
+      <p>Faça sua reserva e venha nos visitar.</p>
+    </div>
+
+    <div class="buttons">
+      <a class="btn btn-main" href="https://wa.me/5551996396133" target="_blank">WhatsApp</a>
+      <a class="btn btn-outline" href="https://www.instagram.com/pedrinhosparrilla" target="_blank">Instagram</a>
+    </div>
+
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3521.9596211909147!2d-48.623658025225026!3d-28.025709940623667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9526d1890b8aace7%3A0x872c4fdad0d560ff!2sPedrinhos%20Parrilla!5e0!3m2!1spt-BR!2sbr!4v1775513248692!5m2!1spt-BR!2sbr"
+      loading="lazy">
+    </iframe>
+
+    <div class="buttons">
+      <a class="btn btn-main" href="https://maps.app.goo.gl/sUDSq7sGgY6PQLDr5" target="_blank">
+        📍 Abrir no Google Maps
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  © 2026 Pedrinho's Parrilla • Site Premium
+</footer>
+
+<!-- MODAL BIO -->
+<div class="modal" id="bioModal">
+  <div class="modal-content">
+    <span class="close" onclick="fecharBio()">✕</span>
+
+    <h3>Biografia Profissional</h3>
+
+    <p>
+      Natanael Rodrigues construiu sua trajetória na gastronomia ao longo
+      de mais de uma década de dedicação. Reconhecido pelo comprometimento,
+      criatividade e liderança, tornou-se referência em cozinha profissional
+      e atendimento de excelência. Hoje integra o time do Pedrinho's Parrilla,
+      elevando diariamente a experiência gastronômica em Garopaba.
+    </p>
+  </div>
+</div>
+
+<script>
+function abrirBio(){
+  document.getElementById("bioModal").style.display="flex";
+}
+
+function fecharBio(){
+  document.getElementById("bioModal").style.display="none";
+}
+
+window.onclick = function(event){
+  let modal = document.getElementById("bioModal");
+  if(event.target == modal){
+    modal.style.display="none";
+  }
+}
+</script>
+
+</body>
+</html>
